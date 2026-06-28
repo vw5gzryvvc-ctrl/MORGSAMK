@@ -190,13 +190,10 @@ return;
 
 if(tg){
 
-tg.sendData(
-JSON.stringify({
-app:"MORGSAMK",
-action:"search",
-query:text
-})
+tg.openTelegramLink(
+"https://t.me/TYMTYMTYM_sAXYRRT_BOT?start=" + encodeURIComponent(text)
 );
+
 
 }else{
 
