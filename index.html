@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MORGSAMK</title>
+
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+<style>
+
+*{box-sizing:border-box;}
+
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:"Arial Black",Arial,sans-serif;
+
+background:
+linear-gradient(
+rgba(0,0,0,.88),
+rgba(0,0,0,.96)
+),
+url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fgrizly.club%2Fuploads%2Fposts%2F2022-12%2F1671035207_grizly-club-p-fsb-png-13.jpg&f=1&nofb=1&ipt=3547463e1b8892fbfb0cf3de37bb86de3453db5cc61303dc5dbc318a184560f4");
+
+background-size:cover;
+background-position:center;
+
+color:white;
+overflow:hidden;
+}
+
+body:before{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+background:radial-gradient(circle,rgba(212,175,55,.25),transparent 45%);
+pointer-events:none;
+}
+
+.card{
+position:relative;
+width:90%;
+max-width:430px;
+padding:40px 30px;
+
+background:linear-gradient(145deg,rgba(20,20,20,.95),rgba(0,0,0,.92));
+
+border-radius:28px;
+border:2px solid #d4af37;
+
+box-shadow:
+0 0 40px rgba(212,175,55,.45),
+inset 0 0 35px rgba(212,175,55,.12);
+
+text-align:center;
+backdrop-filter:blur(15px);
+}
+
+.card:after{
+content:"";
+position:absolute;
+inset:8px;
+border-radius:22px;
+border:1px solid rgba(212,175,55,.25);
+pointer-events:none;
+}
+
+.logo{
+font-size:42px;
+letter-spacing:6px;
+font-weight:900;
+color:#d4af37;
+text-shadow:
+0 0 10px #d4af37,
+0 0 35px #8a6500;
+}
+
+.subtitle{
+margin-top:12px;
+font-size:14px;
+letter-spacing:3px;
+color:#b89525;
+text-transform:uppercase;
+}
+
+input{
+width:100%;
+margin-top:30px;
+padding:18px;
+
+background:#050505;
+
+border:2px solid #8b6b14;
+border-radius:18px;
+
+color:white;
+font-size:17px;
+outline:none;
+}
+
+input:focus{
+border-color:#ffd700;
+box-shadow:0 0 25px rgba(212,175,55,.8);
+}
+
+button{
+width:100%;
+margin-top:25px;
+padding:18px;
+
+border-radius:18px;
+border:2px solid #ffd700;
+
+background:linear-gradient(135deg,#ffd700,#9b7500);
+
+color:#000;
+font-size:20px;
+font-weight:900;
+
+cursor:pointer;
+
+transition:.25s;
+
+box-shadow:0 0 20px rgba(212,175,55,.5);
+}
+
+button:hover{
+transform:translateY(-3px);
+box-shadow:0 0 40px rgba(255,215,0,.9);
+}
+
+.footer{
+margin-top:25px;
+font-size:12px;
+color:#666;
+letter-spacing:2px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<div class="logo">MORGSAMK</div>
+
+<div class="subtitle">
+Telegram Mini App
+</div>
+
+<input id="query" placeholder="Введите запрос...">
+
+<button onclick="send()">
+🔎 ПОИСК
+</button>
+
+<div class="footer">
+POWERED BY TELEGRAM
+</div>
+
+</div>
+
+
+<script>
+
+const tg = window.Telegram?.WebApp;
+
+if(tg){
+tg.ready();
+tg.expand();
+}
+
+function send(){
+
+let text=document.getElementById("query").value.trim();
+
+if(!text){
+alert("Введите запрос");
+return;
+}
+
+if(tg){
+
+tg.sendData(
+JSON.stringify({
+app:"MORGSAMK",
+action:"search",
+query:text
+})
+);
+
+}else{
+
+alert("Откройте приложение через Telegram");
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
